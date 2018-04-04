@@ -47,4 +47,9 @@ describe Atm do
     expected_output = { status: false, message: 'card expired', date: Date.today }
     expect(subject.withdraw(6, '1234', account)).to eq expected_output
   end
+
+  it 'rejects withdraw if account is disabled' do
+    account_status = :disabled
+    expected_output = { status: false, message: 'account disabled', date: Date.today }
+  end
 end
